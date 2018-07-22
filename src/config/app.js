@@ -9,7 +9,7 @@ export default {
   },
   db: {
     mongo: {
-      uri: process.env.MONGO_URI || 'mongodb://mnn-api:mnn000@ds137631.mlab.com:37631/mnn-api'
+      uri: process.env.MONGO_URI || 'mongodb://abc:xyz@something.mlab.com:port/project-name'
     }
   },
   jwt: {
