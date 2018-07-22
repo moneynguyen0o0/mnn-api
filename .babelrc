@@ -1,0 +1,24 @@
+
+{
+  "presets": [
+    [
+      "env", {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "stage-3"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".js", ".json"]
+      }
+    ]
+  ]
+}

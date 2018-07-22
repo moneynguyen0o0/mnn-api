@@ -1,0 +1,43 @@
+{
+  "name": "mnn-api",
+  "version": "1.0.0",
+  "description": "Nodejs boilerplate for building RESTful APIs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore ./src",
+    "dev": "npm run lint && NODE_PATH=. nodemon --watch ./src --exec \"babel-node\" ./src/index.js",
+    "build": "rm -rf build && mkdir build && babel -d ./build ./src -s",
+    "start": "NODE_ENV=production node ./build/index.js"
+  },
+  "author": "Money Nguyen <moneynguyen0o0@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-cluster": "0.0.5",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.12.1",
+    "joi": "^13.4.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "method-override": "^3.0.0",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^4.1.8",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^1.10.3",
+    "eslint-plugin-babel": "^3.3.0",
+    "nodemon": "^1.17.5"
+  }
+}
