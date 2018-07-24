@@ -54,7 +54,7 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const user = req.body;
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, omit(user, ['_id']), { new: true }); // omit or pick some field
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, omit(user, ['_id']), { new: true }); // omit or pick fields
 
     res.json(updatedUser.transform());
   } catch (err) {
