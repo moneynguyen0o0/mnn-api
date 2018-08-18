@@ -6,16 +6,19 @@ import methodOverride from 'method-override';
 import helmet from 'helmet';
 import cors from 'cors';
 import routesV1 from 'routes/v1';
-import config from 'config/app';
+import config, { isProduction, isDevelopment } from 'config';
 import { notFound, logErrors, handleErrors } from 'middlewares/error';
-import { isProduction, isDevelopment } from 'config/env';
+import { handleOrigin } from 'utils/cors';
 import * as URL from 'constants/url';
 
 const run = () => {
   const app = express();
 
   // enable CORS - Cross Origin Resource Sharing
-  app.use(cors());
+  app.use(cors({
+    credentials: true,
+    origin: handleOrigin
+  }));
 
   // trust proxy in production from local nginx front server
   if (isProduction) {
@@ -44,7 +47,7 @@ const run = () => {
   app.use(notFound());
 
   // send stacktrace only during development
-  if (isDevelopment) app.use(logErrors());
+  app.use(logErrors());
 
   // error handler
   app.use(handleErrors());

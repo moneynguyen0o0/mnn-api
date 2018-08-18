@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import config from 'config/app';
+import config from 'config';
 
 const sign = (payload) => {
   return new Promise((resolve, reject) => {

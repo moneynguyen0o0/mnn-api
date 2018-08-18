@@ -1,12 +1,12 @@
 import { omit } from 'lodash';
 import User from 'models/user';
+import config from 'config';
 import APIError, { checkDuplicateEmail } from 'utils/error';
-import config from 'config/app';
 import { sign } from 'utils/auth';
 
 const login = async (req, res, next) => {
-  const { body: { email, password } } = req;
   try {
+    const { body: { email, password } } = req;
     const user = await User.authenticate(email, password);
     const convertedUser = user.transform();
     const token = await sign(convertedUser);
@@ -69,15 +69,15 @@ const remove = (req, res, next) => {
 };
 
 const updatePassword = async (req, res, next) => {
-  const {
-    body: {
-      currentPassword,
-      newPassword
-    },
-    params: { id }
-  } = req;
-
   try {
+    const {
+      body: {
+        currentPassword,
+        newPassword
+      },
+      params: { id }
+    } = req;
+
     const user = await User.findById(id);
     if (!user) throw new APIError({ message: 'User ID not found', status: 401 });
 

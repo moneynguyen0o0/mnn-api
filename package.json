@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore ./src",
     "dev": "npm run lint && NODE_PATH=. nodemon --watch ./src --exec \"babel-node\" ./src/index.js",
+    "test": "mocha --require babel-core/register --require babel-polyfill --timeout 20000 --recursive ./test",
     "build": "rm -rf build && mkdir build && babel -d ./build ./src -s",
     "start": "NODE_ENV=production node ./build/index.js"
   },
@@ -36,8 +37,11 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint": "^1.10.3",
     "eslint-plugin-babel": "^3.3.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.17.5"
   }
 }
