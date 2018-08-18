@@ -5,24 +5,26 @@ import compress from 'compression';
 import methodOverride from 'method-override';
 import helmet from 'helmet';
 import cors from 'cors';
+
 import routesV1 from 'routes/v1';
-import config, { isProduction, isDevelopment } from 'config';
+import config from 'config/app';
 import { notFound, logErrors, handleErrors } from 'middlewares/error';
 import { handleOrigin } from 'utils/cors';
+import { isProduction } from 'config/env';
 import * as URL from 'constants/url';
 
 const run = () => {
   const app = express();
 
-  // enable CORS - Cross Origin Resource Sharing
-  app.use(cors({
-    credentials: true,
-    origin: handleOrigin
-  }));
-
   // trust proxy in production from local nginx front server
   if (isProduction) {
     app.set('trust proxy', 'loopback');
+
+    // enable CORS - Cross Origin Resource Sharing
+    app.use(cors({
+      credentials: true,
+      origin: handleOrigin
+    }));
 
     // secure apps by setting various HTTP headers
     app.use(helmet());

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import config from 'config';
+import config from 'config/app';
 
 const connect = () => {
   const uri = config.db.mongo.uri;
