@@ -15,7 +15,7 @@ export default {
   },
   jwt: {
     secret: JWT_SECRET,
-    expiration: 10800
+    expiration: 1 * 60 * 60 * 1000
   },
   baseUrl: `http://${HOST}:${PORT}`
 };

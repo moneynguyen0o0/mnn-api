@@ -16,15 +16,15 @@ import * as URL from 'constants/url';
 const run = () => {
   const app = express();
 
+  // enable CORS - Cross Origin Resource Sharing
+  app.use(cors({
+    credentials: true,
+    origin: handleOrigin
+  }));
+
   // trust proxy in production from local nginx front server
   if (isProduction) {
     app.set('trust proxy', 'loopback');
-
-    // enable CORS - Cross Origin Resource Sharing
-    app.use(cors({
-      credentials: true,
-      origin: handleOrigin
-    }));
 
     // secure apps by setting various HTTP headers
     app.use(helmet());

@@ -15,11 +15,11 @@ router
 
 router
   .route(URL.ID)
-  .get(authorize(ROLE.USER), userController.get)
-  .put(authorize(ROLE.USER), validate(updateUser), userController.update)
-  .delete(authorize(ROLE.USER), userController.remove);
+  .get(authorize([ROLE.ADMIN, ROLE.USER]), userController.get)
+  .put(authorize([ROLE.ADMIN, ROLE.USER]), validate(updateUser), userController.update)
+  .delete(authorize([ROLE.ADMIN, ROLE.USER]), userController.remove);
 
 router.route(`${URL.ID}${URL.CHANGE_PASSWORD}`)
-  .patch(authorize(ROLE.USER), validate(updatePassword), userController.updatePassword);
+  .patch(authorize([ROLE.ADMIN, ROLE.USER]), validate(updatePassword), userController.updatePassword);
 
 export default router;
