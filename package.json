@@ -18,7 +18,6 @@
     "compression": "^1.7.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "express-cluster": "0.0.5",
     "express-validation": "^1.0.2",
     "helmet": "^3.12.1",
     "joi": "^13.4.0",

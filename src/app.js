@@ -1,5 +1,4 @@
 import express from 'express';
-import cluster from 'express-cluster';
 import bodyParser from 'body-parser';
 import compress from 'compression';
 import methodOverride from 'method-override';
@@ -57,15 +56,9 @@ const run = () => {
   // error handler
   app.use(handleErrors());
 
-  if (isProduction) {
-    cluster((worker) => app.listen(config.server.port, config.server.host, () => {
-      console.log(`===> Worker ${worker.id} online`);
-    }), { count: 5 });
-  } else {
-    app.listen(config.server.port, () => {
-      console.log(`===> App running on ${config.baseUrl}`);
-    });
-  }
+  app.listen(config.server.port, () => {
+    console.log(`===> App running on ${config.baseUrl}`);
+  });
 };
 
 export default { run };
