@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import validate from 'express-validation';
+
 import userController from 'controllers/user';
 import { loginUser } from 'validations/user';
 import * as URL from 'constants/url';

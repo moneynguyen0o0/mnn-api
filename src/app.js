@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import routesV1 from 'routes/v1';
+import routesV2 from 'routes/v2';
 import config from 'config/app';
 import { notFound, logErrors, handleErrors } from 'middlewares/error';
 import { handleOrigin } from 'utils/cors';
@@ -44,6 +45,8 @@ const run = () => {
 
   // mount api v1 routes
   app.use(URL.V1, routesV1);
+  // mount api v2 routes
+  app.use(URL.V2, routesV2);
 
   // catch 404 and forward to error handler
   app.use(notFound());

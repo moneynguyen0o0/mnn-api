@@ -1,4 +1,5 @@
 export const V1 = '/v1';
+export const V2 = '/v2';
 export const HOME = '/';
 export const ID = '/:id';
 
